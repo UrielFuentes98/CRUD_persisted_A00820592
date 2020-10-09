@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam 1. Pokemon cards.</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./utils.js"></script>
+</head>
+<body>
+  <h2 style="margin-left: 15px;">Pokemon information cards.</h2>
+  <h4 style="margin-left: 15px;">Get Pokemon Info Card.</h4>
+  <form>
+    <div class="form-row align-items-center">
+      <div class="col-auto" style="margin-left: 15px">
+        <label class="sr-only" for="pokemon-name">Name</label>
+        <input type="text" style="width:150px" class="form-control mb-2" id="pokemon-name" placeholder="Name">  
+      </div>
+      <div class="col-auto" style="margin-left: 15px">
+        <button type="button" onclick="add_pokemon_to_grid()" class="btn btn-primary mb-2">Get</button>
+      </div>
+    </div>
+  </form>
+  <h4 style="margin-left: 15px;">Add Pokemon Special Card.</h4>
+  <form >
+    <div class="form-row align-items-center">
+      <div class="col-auto" style="margin-left: 15px">
+        <label class="sr-only" for="ID_new">ID</label>
+        <input type="number" style="width:100px" class="form-control mb-2" id="ID_new" placeholder="ID">  
+      </div>
+      <div class="col-auto">
+        <select class="form-control" style="margin-left: 15px; width:200px" id="type_sel">
+          <option>Element</option>
+          <option>Prize</option>
+        </select>  
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="val_new">Value</label>
+        <input type="text" class="form-control" id="val_new" style="margin-left: 15px; width:100px" placeholder="Value">    
+      </div>
+      <div class="col-auto">
+        <button type="button" onclick="add_card()" class="btn btn-primary mb-2">Submit</button>
+      </div>
+    </div>
+    <h4 style="margin-left: 15px;">Other actions (special cards).</h4>
+    <div class="form-row align-items-center">
+      <div class="col-auto" style="margin-left: 15px">
+        <label class="sr-only" for="get_ID">ID</label>
+        <input type="number" style="width:100px" class="form-control mb-2" id="get_ID" placeholder="ID">  
+      </div>
+      <div class="col-auto" style="margin-left: 15px">
+        <button type="button" onclick="get_card()" class="btn btn-primary mb-2">Get</button>
+      </div>
+      <div id="get_result" style="margin-left: 15px"></div>
+      <div class="col-auto" style="margin-left: 15px">
+        <button type="button" onclick="clear_get1()" class="btn btn-primary mb-2">Clear</button>
+      </div>
+    </div>
+    <div class="form-row align-items-center">
+      <div class="col-auto" style="margin-left: 15px">
+        <button type="button" onclick="get_all()" class="btn btn-primary mb-2">Get All</button>
+      </div>
+      <div class="col-auto" style="margin-left: 15px">
+        <button type="button" onclick="clear_all()" class="btn btn-primary mb-2">Clear Output</button>
+      </div> 
+    </div>
+    <pre id="json_results" style="margin-left: 15px"></pre>
+    <div class="form-row align-items-center">
+      <div class="col-auto" style="margin-left: 15px">
+        <label class="sr-only" for="update_ID">ID</label>
+        <input type="number" style="width:100px" class="form-control mb-2" id="update_ID" placeholder="ID">  
+      </div>
+      <div class="col-auto" style="margin-left: 15px">
+        <label class="sr-only" for="update_val">Value</label>
+        <input type="text" style="width:100px" class="form-control mb-2" id="update_val" placeholder="Value">  
+      </div>
+      <div class="col-auto" style="margin-left: 15px">
+        <button type="button" onclick="update_card()" class="btn btn-primary mb-2">Update</button>
+      </div>
+    </div>
+    <div class="form-row align-items-center">
+      <div class="col-auto" style="margin-left: 15px">
+        <label class="sr-only" for="delete_ID">ID</label>
+        <input type="number" style="width:100px" class="form-control mb-2" id="delete_ID" placeholder="ID">  
+      </div>
+      <div class="col-auto" style="margin-left: 15px">
+        <button type="button" onclick="delete_card()" class="btn btn-primary mb-2">Delete</button>
+      </div>
+    </div>
+  </form>
+  <div id="notFound"></div>
+  <div class="grid-container">
+  </div>
+</body>
+</html>
